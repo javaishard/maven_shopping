@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+        function checkUser(user) {
+            var checkuser = document.getElementById("checkuser");
+            var reg = /^[0-9a-z_-]{3,12}$/;
+
+            if (user == undefined) {
+                checkuser.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+
+
+            if (reg.test(user)) {
+                checkuser.className = "glyphicon glyphicon-ok";
+                return true;
+            } else {
+                checkuser.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+
+        }
+        function checkEmail(email) {
+            var checkemail = document.getElementById("checkemail");
+            var reg = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+            if (email == undefined) {
+                checkemail.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+
+            if (reg.test(email)) {
+                checkemail.className = "glyphicon glyphicon-ok";
+                return true;
+            } else {
+                checkemail.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+
+        }
+        function checkPhone(phone) {
+            var checkphone = document.getElementById("checkphone");
+            var reg = /^1[35678]{1}[0-9]{9}$/;
+            if (phone == undefined) {
+                checkphone.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+            if (reg.test(phone)) {
+                checkphone.className = "glyphicon glyphicon-ok";
+                return true;
+            } else {
+                checkphone.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+
+        }
+        function checkPassword(password) {
+
+            var checkpass = document.getElementById("checkpass");
+            var reg = /^[a-z0-9_-]{6,18}$/;
+
+            if (password == undefined) {
+                checkpass.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+
+            if (reg.test(password)) {
+                checkpass.className = "glyphicon glyphicon-ok";
+                return true;
+            } else {
+                checkpass.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+
+        }
+        function checkNextPassword(next_password) {
+            var checkpass_next = document.getElementById("checkpass_next");
+            var password = document.form1.password.value;
+            if (next_password == undefined) {
+                checkpass_next.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+
+
+            if (next_password.trim() == password.trim()) {
+                checkpass_next.className = "glyphicon glyphicon-ok";
+                return true;
+            } else {
+                checkpass_next.className = "glyphicon glyphicon-remove";
+                return false;
+            }
+
+        }
+        function check() {
+
+          return checkUser() && checkEmail() && checkPhone() && checkPassword() && checkNextPassword();
+
+        }
+
+    </script>
+</head>
+
+<body>
+<form name="form1" action="https://www.baidu.com" onsubmit="return check()">
+    用户名<input name="user" type="text" onblur="checkUser(this.value)">
+    <span id="checkuser"></span><br/>
+    邮箱<input name="email" type="email" onblur="checkEmail(this.value)">
+    <span id="checkemail"></span><br/>
+    密码<input name="password" type="password" onblur="checkPassword(this.value)">
+    <span id="checkpass"></span><br/>
+    确认密码<input name="password_next" type="password" onblur="checkNextPassword(this.value)">
+    <span id="checkpass_next"></span><br/>
+    手机号<input name="phone" type="text" onblur="checkPhone(this.value)">
+    <span id="checkphone"></span><br/>
+    <input type="submit" value="注册">
+</form>
+<script>
+    var qq;
+    var reg = /^[0-9a-z_-]{3,12}$/;
+    console.log(qq);
+    console.log(reg.test(qq));
+</script>
+
+</body>
+</html>
